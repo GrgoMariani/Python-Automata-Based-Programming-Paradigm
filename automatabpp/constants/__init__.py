@@ -1,0 +1,5 @@
+GRAPHS_DIRECTORY = "graphs"
+
+START_STATE_NAME = "_START_"
+START_COMMAND_NAME = "_start_"
+STOP_COMMAND_NAME = "_stop_"
