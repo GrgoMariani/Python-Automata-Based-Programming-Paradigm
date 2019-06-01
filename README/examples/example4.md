@@ -56,7 +56,7 @@ _embedded/fan.graphml_
 
 <img src="../images/examples/example4/machine_fan.png" width="640" height="140" />
 
-These graphs will only serve as an endpoint for our execution functions. One thing to notice is that you can only turn on the device once. There is no possibility of turning the device again while it is already turned on.
+These graphs will only serve as an endpoint for our execution functions. One thing to notice is that you can only turn on the device once. There is no possibility of turning the device on again while it is already in that state.
 <br>Since the default state for LED light is to always be on we will set it to be on while starting.
 
 Now let's draw the behaviour of our components.
@@ -87,7 +87,6 @@ You can check the code in the [example4.py][pycode] script.
 - First let's take care of importing everything we will need:
     ```python
     from automatabpp import *
-    from comparisons import COMPARISONS # a helper class for comparison lambda functions
     import math, time                   # we'll use this to simulate our readings
     ```
 
@@ -166,8 +165,14 @@ You can check the code in the [example4.py][pycode] script.
       temp = round(simulate_temperature_reading(i), 2)          # simulate reading the temperature sensor
       print("\t\t|\t{}V\t|\t{}°C".format(volt, temp))
       OPERATION.run_fsm()                                       # run commands left in the CommandQueue
-      time.sleep(1)
+      time.sleep(2)
   ```
+
+Run the script and check how our simulated device behaves. Is the behaviour the same as in the requirements?
+
+```console
+user@computer:~$ python example4.py
+```
 
 The rest of the code doesn't ever need to care about the behaviour of our components. The only thing that we need to do is read the sensor from time to time and run the commands left in the CommandQueue and the automatabpp will take care of everything else.
 <br>Our code has just gotten a lot simpler after this and we can take care of whichever other things we want to do in the application.

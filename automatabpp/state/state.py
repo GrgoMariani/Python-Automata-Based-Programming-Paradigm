@@ -1,11 +1,11 @@
-from automatabpp import logger
+from automatabpp import automata_bpp_logger
 from automatabpp.commandqueue.commandqueue import CommandQueue
 
 
 class State(object):
 
     def __not_defined(self, **_):
-        logger.debug("Machine:State [{}:{}] Execution not defined".format(self.machine_name, self.state_name))
+        automata_bpp_logger.debug("Machine:State [{}:{}] Execution not defined".format(self.machine_name, self.state_name))
 
     def __init__(self, state_name: str, machine_name: str):
         self.machine_name = machine_name

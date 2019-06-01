@@ -4,8 +4,8 @@ I won't cover too much how the code is written but rather how to use it.
 
 Once we `import automatabpp` into our python script we can use the following 4 classes.
 
-| [OPERATION](#operation) | [BEHAVIOUR](#behaviour) | [EXECUTION](#execution) | [INTERFACE](#interface) |
-| --- | --- | --- | --- |
+| [OPERATION](#operation) | [BEHAVIOUR](#behaviour) | [EXECUTION](#execution) | [INTERFACE](#interface) | [COMPARISONS](#comparisons) |
+| --- | --- | --- | --- | --- |
 
 
 ### OPERATION
@@ -45,6 +45,21 @@ INTERFACE.run_command_if_lambda_on_result_true(lambda_function, command)
 # When the function decorated with this function is called, the command will be run if the lambda on result is True
 ```
 
+### COMPARISONS
+A helper class with lots of comparison `lambda` type functions. Can only return `True` or `False` .
+```python
+COMPARISONS.less_than(num)
+COMPARISONS.between(num1, num2)
+COMPARISONS.more_than(num)
+COMPARISONS.equal(num)
+COMPARISONS.not_equal(num)
+COMPARISONS.contains(string)
+COMPARISONS.one_of(items)
+COMPARISONS.none_of(items)
+COMPARISONS.always_true()
+COMPARISONS.on_result_true()
+COMPARISONS.on_result_false()
+```
 
 | [Back to Main][prev] | ----- | [Tutorial][next] |
 | --- | --- | --- |

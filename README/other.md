@@ -11,5 +11,6 @@ Just keeping a list of things that I could add to the module.
 * add encryption support
 * add compression support
 * add more graph file extensions support
+* add more comparisons
 
 [Back to Main](../README.md)

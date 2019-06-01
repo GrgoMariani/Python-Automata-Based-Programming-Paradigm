@@ -88,7 +88,6 @@ I also recommend using **Python 3.4+** although I haven't even tried it yet on t
 ### Directories
 
 * **./automatabpp** - our module source code. This directory contains the python code for this project.
-* **./comparisons** - a small module which offers some lambda comparison functions you can use with this project.
 * **./graphs** - yEd graphs are stored in this directory by default
 * **./README** - I've really took my time to write all of this so I would appreciate you checking it out
 

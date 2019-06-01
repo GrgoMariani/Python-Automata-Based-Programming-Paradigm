@@ -1,5 +1,4 @@
 from automatabpp import *
-from comparisons import COMPARISONS
 import math, time
 
 
@@ -73,4 +72,4 @@ for i in range(100):
     temp = round(simulate_temperature_reading(i), 2)
     print("\t\t|\t{}V\t|\t{}°C".format(volt, temp))
     OPERATION.run_fsm()
-    time.sleep(1)
+    time.sleep(2)

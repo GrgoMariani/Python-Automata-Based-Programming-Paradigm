@@ -1,12 +1,13 @@
-__all__ = ["logger", "BEHAVIOUR", "EXECUTION", "OPERATION", "INTERFACE"]
+__all__ = ["BEHAVIOUR", "EXECUTION", "OPERATION", "INTERFACE", "COMPARISONS"]
 
 import logging
-logger = logging.getLogger(__name__)
+automata_bpp_logger = logging.getLogger(__name__)
 
 from . machines.machines import Machines
 from . xml.xmlread import read_graphml
 from . commandqueue.commandqueue import CommandQueue
 from . constants import GRAPHS_DIRECTORY, START_COMMAND_NAME, STOP_COMMAND_NAME
+from . comparisons.comparisons import COMPARISONS
 
 from functools import wraps
 
@@ -25,7 +26,7 @@ class BEHAVIOUR:
         if graph_file_path[-8:] == ".graphml":
             read_graphml("{}/{}".format(GRAPHS_DIRECTORY, graph_file_path), machine_name)
         else:
-            logger.warning("Unknown format for reading the graph file: {}".format(graph_file_path))
+            automata_bpp_logger.warning("Unknown format for reading the graph file: {}".format(graph_file_path))
 
 
 class EXECUTION:

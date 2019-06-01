@@ -1,4 +1,4 @@
-from automatabpp import logger
+from automatabpp import automata_bpp_logger
 from automatabpp.metaclasses.singleton import Singleton
 from automatabpp.machine.machine import Machine
 from automatabpp.commandqueue.commandqueue import CommandQueue
@@ -27,7 +27,7 @@ class Machines(object, metaclass=Singleton):
             self.ExecuteNextCommand()
 
     def ExecuteCommand(self, command: str):         # Not recommended if states can execute commands
-        logger.debug("Executing command [{}]".format(command))
+        automata_bpp_logger.debug("Executing command [{}]".format(command))
         for machine in self.__list_of_machines:
             machine.ExecuteTransition(command)
 

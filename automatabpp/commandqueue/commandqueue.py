@@ -1,4 +1,4 @@
-from automatabpp import logger
+from automatabpp import automata_bpp_logger
 from automatabpp.metaclasses.singleton import Singleton
 
 
@@ -19,7 +19,7 @@ class CommandQueue(object, metaclass=Singleton):
     def PushCommandsToQueue(self, commands: str):
         for cmd in commands.split(CommandQueue.SEPARATOR):
             if len(cmd) > 0:
-                logger.debug("++++++> {} pushed to CommandQueue <++++++".format(cmd))
+                automata_bpp_logger.debug("++++++> {} pushed to CommandQueue <++++++".format(cmd))
                 self.__list_of_cmds_to_execute.append(cmd)
 
     def EmptyAllCommands(self):

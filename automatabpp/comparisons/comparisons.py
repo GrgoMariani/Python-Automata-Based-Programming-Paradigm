@@ -25,11 +25,11 @@ class COMPARISONS:
         return lambda x: x.count(string) > 0
 
     @staticmethod
-    def one_of(items: str):
+    def one_of(items):
         return lambda x: x in items
 
     @staticmethod
-    def none_of(items: str):
+    def none_of(items):
         return lambda x: x not in items
 
     @staticmethod

@@ -1,4 +1,4 @@
-from automatabpp import logger
+from automatabpp import automata_bpp_logger
 from automatabpp.state.state import State
 from automatabpp.constants import START_STATE_NAME
 
@@ -28,7 +28,7 @@ class Machine(object):
     def ExecuteTransition(self, command: str):
         st_after_name = self.curr_state.GetNextStateWithTransition(command)
         if st_after_name is not None:
-            logger.debug("{}: state change {}->{}".format(self.machine_name, self.curr_state.GetName(), st_after_name))
+            automata_bpp_logger.debug("{}: state change {}->{}".format(self.machine_name, self.curr_state.GetName(), st_after_name))
             self.curr_state = self.GetStateWithName(st_after_name)
             self.curr_state.ExecuteState(command)
             return True
