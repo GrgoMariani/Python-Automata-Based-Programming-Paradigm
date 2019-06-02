@@ -1,4 +1,4 @@
-from automatabpp import automata_bpp_logger
+from automatabpp.automatabpp import automata_bpp_logger
 from automatabpp.metaclasses.singleton import Singleton
 from automatabpp.machine.machine import Machine
 from automatabpp.commandqueue.commandqueue import CommandQueue

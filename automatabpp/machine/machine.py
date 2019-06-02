@@ -1,4 +1,4 @@
-from automatabpp import automata_bpp_logger
+from automatabpp.automatabpp import automata_bpp_logger
 from automatabpp.state.state import State
 from automatabpp.constants import START_STATE_NAME
 

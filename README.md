@@ -26,7 +26,7 @@ Each graph is called a machine, and each execution is called a state. (Yes, ther
 
 To get a better idea of what's going on here's a quick example. Using a [__yEd Graph Editor__][4] Create a .graphml graph like this one and store it in the _graphs/_ folder of your project as _first.graphml_ .
 
-![](./README/images/first.png)
+![](./docs/images/first.png)
 
 Run the next code: (don't forget to clone the repository into your project folder)
 
@@ -87,20 +87,20 @@ I also recommend using **Python 3.4+** although I haven't even tried it yet on t
 
 ### Directories
 
-* **./automatabpp** - our module source code. This directory contains the python code for this project.
-* **./graphs** - yEd graphs are stored in this directory by default
-* **./README** - I've really took my time to write all of this so I would appreciate you checking it out
+* **./automatabpp/** - our module source code. This directory contains the python code for this project.
+* **./docs/** - I've really took my time to write all of this so I would appreciate you checking it out
+* **./graphs/** - yEd graphs are stored in this directory by default
 
 ### Additional Links
 
 Here are some other .md links for You to read about this project.
-* [A list of available functions](README/FSM.md)
-* [Tutorial](README/tutorial.md) - make a _"Hello, World!"_ type of application (sort of). Also some more insight on what happens in the code itself.
-* [Example 1](README/examples/example1.md) - a simple e-mail validation machine
-* [Example 2](README/examples/example2.md) - an example for developing with multiple machines
-* [Example 3](README/examples/example3.md) - an example showcasing Base64 encode with this paradigm
-* [Example 4](README/examples/example4.md) - developing your embedded application with _complex_ behaviour
-* [Other](README/other.md)
+* [A list of available functions](docs/FSM.md)
+* [Tutorial](docs/tutorial.md) - make a _"Hello, World!"_ type of application (sort of). Also some more insight on what happens in the code itself.
+* [Example 1](docs/examples/example1.md) - a simple e-mail validation machine
+* [Example 2](docs/examples/example2.md) - an example for developing with multiple machines
+* [Example 3](docs/examples/example3.md) - an example showcasing Base64 encode with this paradigm
+* [Example 4](docs/examples/example4.md) - developing your embedded application with _complex_ behaviour
+* [Other](docs/other.md)
 
 
 [1]: https://en.wikipedia.org/wiki/Automata-based_programming "Automata-based programming"
