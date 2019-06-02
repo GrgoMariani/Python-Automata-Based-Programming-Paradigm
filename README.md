@@ -16,6 +16,12 @@ This way you can concentrate on writing code for your main loop only.
 
 Naturally, everything is better when there is an example with it to explain it even more so I recommend you check [the examples](#additional-links) in the repository first.
 
+You can install the module via Pypi with
+
+```
+pip install automatabpp
+```
+
 ### A short explanation of the project
 
 To really simplify what this is all about in one sentence: ___"Instead of programming the code yourself you draw graphs to define the behaviour."___
