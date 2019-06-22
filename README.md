@@ -72,7 +72,7 @@ Indeed, there is more than enough style in developing this way once you learn ho
 ### How does this differ from ... ?
 
 There are countless ways to develop your program and this one is just one take on it.
-However I do feel there are some advanteges to using the Automata-Based programming over some other approach.
+However I do feel there are some advantages to using the Automata-Based programming over some other approach.
 * Explanation of the code can be easily visualized since most of the code is done by drawing graphs
 * If the machines are well defined the execution and the main loop can be really simple
 * __It's fun__ _(if you consider drawing FSMs to be fun)_
@@ -93,9 +93,9 @@ I also recommend using **Python 3.4+** although I haven't even tried it yet on t
 
 ### Directories
 
-* **./automatabpp/** - our module source code. This directory contains the python code for this project.
-* **./docs/** - I've really took my time to write all of this so I would appreciate you checking it out
-* **./graphs/** - yEd graphs are stored in this directory by default
+* **automatabpp** - our module source code. This directory contains the python code for this project.
+* **docs** - I've really took my time to write all of this so I would appreciate you checking it out
+* **graphs** - yEd graphs are stored in this directory by default
 
 ### Additional Links
 
