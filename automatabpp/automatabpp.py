@@ -1,15 +1,17 @@
 import logging
 from functools import wraps
 
+LOGGER = logging.getLogger(__name__)
+
 from .commandqueue.commandqueue import CommandQueue
 from .comparisons.comparisons import COMPARISONS
-from .constants import START_COMMAND, STOP_COMMAND
+from .constants import START_COMMAND, STOP_COMMAND, GRAPHS_DIRECTORY
 from .machines.machines import Machines
 from .xml.xmlread import read_graphml
 
 __all__ = ["BEHAVIOUR", "EXECUTION", "OPERATION", "INTERFACE", "COMPARISONS", "LOGGER"]
 
-LOGGER = logging.getLogger(__name__)
+
 
 
 class BEHAVIOUR:

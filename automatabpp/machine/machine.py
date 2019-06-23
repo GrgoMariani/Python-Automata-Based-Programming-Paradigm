@@ -20,7 +20,7 @@ class Machine(object):
         self.get_state_by_name(state_before).set_transition(command, state_after)
 
     def set_state_function(self, state_name: str, callback: callable):
-        self.get_state_by_name(state_name).set_state_function(callback)
+        self.get_state_by_name(state_name).set_callback(callback)
 
     def transition(self, command: str):
         st_after_name = self.curr_state.transition_to_next(command)

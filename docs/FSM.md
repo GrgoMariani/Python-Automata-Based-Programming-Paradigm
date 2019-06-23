@@ -14,14 +14,14 @@ Operation is a class that only executes the global operations on the FSMs.
 ```python
 OPERATION.start()       # Starts the FSMs by sending the '_start_' command to all the machines
 
-.OPERATIONstop()        # Stops all the FSMs by sending the '_stop_' command to all the machines,
+OPERATION.stop()        # Stops all the FSMs by sending the '_stop_' command to all the machines,
                             # reseting them to the default '_START_' state and emptying the machine commands stack.
 
-.rOPERATIONeset()       # Stops and starts the FSMs
+OPERATION.reset()       # Stops and starts the FSMs
 
-.ruOPERATIONn()         # Runs all the commands in the CommandQueue until the queue is empty.
+OPERATION.run()         # Runs all the commands in the CommandQueue until the queue is empty.
 
-.runOPERATION(cmd)      # Runs only the cmd on all machines now without running the rest of the queue.
+OPERATION.run(cmd)      # Runs only the cmd on all machines now without running the rest of the queue.
 ```
 
 ### BEHAVIOUR
