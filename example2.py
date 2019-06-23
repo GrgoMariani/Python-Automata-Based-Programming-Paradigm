@@ -36,5 +36,5 @@ def STRONGER(**_):
 # ...............................................................................
 # ---------- DEFINITIONS COMPLETE - RUNNING THE PROGRAM -------------------------
 # ...............................................................................
-OPERATION.start_fsm()
-OPERATION.run_fsm()
+OPERATION.start()
+OPERATION.run()

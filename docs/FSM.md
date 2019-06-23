@@ -12,16 +12,16 @@ Once we `import automatabpp` into our python script we can use the following 4 c
 
 Operation is a class that only executes the global operations on the FSMs.
 ```python
-OPERATION.start_fsm()       # Starts the FSMs by sending the '_start_' command to all the machines
+OPERATION.start()       # Starts the FSMs by sending the '_start_' command to all the machines
 
-OPERATION.stop_fsm()        # Stops all the FSMs by sending the '_stop_' command to all the machines,
+OPERATION.stop()        # Stops all the FSMs by sending the '_stop_' command to all the machines,
                             # reseting them to the default '_START_' state and emptying the machine commands stack.
 
-OPERATION.reset_fsm()       # Stops and starts the FSMs
+OPERATION.reset()       # Stops and starts the FSMs
 
-OPERATION.run_fsm()         # Runs all the commands in the CommandQueue until the queue is empty.
+OPERATION.run()         # Runs all the commands in the CommandQueue until the queue is empty.
 
-OPERATION.run_fsm(cmd)      # Runs only the cmd on all machines now without running the rest of the queue.
+OPERATION.run(cmd)      # Runs only the cmd on all machines now without running the rest of the queue.
 ```
 
 ### BEHAVIOUR

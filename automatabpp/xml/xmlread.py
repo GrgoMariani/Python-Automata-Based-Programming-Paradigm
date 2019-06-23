@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
-from automatabpp.machines.machines import Machines
+
 from automatabpp.commandqueue.commandqueue import CommandQueue
+from automatabpp.machines.machines import Machines
 
 
 def read_graphml(graphml_path: str, machine_name: str):
@@ -40,11 +41,11 @@ def read_graphml(graphml_path: str, machine_name: str):
     edges = [GraphEdge(edge) for edge in root.findall("ns0:graph/ns0:edge", read_graphml.ns)]
     nodes = [GraphNode(node) for node in root.findall("ns0:graph/ns0:node", read_graphml.ns)]
     node_map = dict()
-    new_machine = Machines().AddNewMachine(machine_name)
+    new_machine = Machines().add_new_machine(machine_name)
     for node in nodes:
         node_map[node.id] = node.name
         for transition in node.transitions_after.split(CommandQueue.SEPARATOR):
-            new_machine.GetStateWithName(node.name).AddCommandToCallAfterExecution(transition)
+            new_machine.get_state_by_name(node.name).add_post_command(transition)
     for edge in edges:
         for transition_name in edge.name.split():
-            new_machine.AddTransition(node_map[edge.source], transition_name, node_map[edge.target])
+            new_machine.add_transition(node_map[edge.source], transition_name, node_map[edge.target])

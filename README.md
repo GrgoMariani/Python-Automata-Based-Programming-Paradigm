@@ -49,8 +49,8 @@ def ON_START(*args, **kwargs):
 def HELLO(*args, **kwargs):
     print("Hello!")
 
-FSM.OPERATION.start_fsm()                   # prints "FSM start"
-FSM.OPERATION.run_fsm("is_anyone_there")    # prints "Hello!"
+FSM.OPERATION.start()                   # prints "FSM start"
+FSM.OPERATION.run("is_anyone_there")    # prints "Hello!"
 ```
 
 To learn more please check [the examples at the bottom of the page](#additional-links).

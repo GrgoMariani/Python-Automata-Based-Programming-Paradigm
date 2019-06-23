@@ -1,5 +1,7 @@
+import math
+import time
+
 from automatabpp import *
-import math, time
 
 
 class LED:
@@ -64,12 +66,12 @@ def simulate_temperature_reading(num):
 # ...............................................................................
 # ---------- DEFINITIONS COMPLETE - RUNNING THE PROGRAM -------------------------
 # ...............................................................................
-OPERATION.start_fsm()
+OPERATION.start()
 
 
 for i in range(100):
     volt = round(simulate_battery_voltage_reading(i), 2)
     temp = round(simulate_temperature_reading(i), 2)
     print("\t\t|\t{}V\t|\t{}°C".format(volt, temp))
-    OPERATION.run_fsm()
+    OPERATION.run()
     time.sleep(2)
