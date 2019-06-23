@@ -1,15 +1,15 @@
-__all__ = ["BEHAVIOUR", "EXECUTION", "OPERATION", "INTERFACE", "COMPARISONS"]
-
 import logging
-automata_bpp_logger = logging.getLogger(__name__)
-
-from . machines.machines import Machines
-from . xml.xmlread import read_graphml
-from . commandqueue.commandqueue import CommandQueue
-from . constants import GRAPHS_DIRECTORY, START_COMMAND_NAME, STOP_COMMAND_NAME
-from . comparisons.comparisons import COMPARISONS
-
 from functools import wraps
+
+from .commandqueue.commandqueue import CommandQueue
+from .comparisons.comparisons import COMPARISONS
+from .constants import START_COMMAND, STOP_COMMAND
+from .machines.machines import Machines
+from .xml.xmlread import read_graphml
+
+__all__ = ["BEHAVIOUR", "EXECUTION", "OPERATION", "INTERFACE", "COMPARISONS", "LOGGER"]
+
+LOGGER = logging.getLogger(__name__)
 
 
 class BEHAVIOUR:
@@ -24,42 +24,42 @@ class BEHAVIOUR:
         if graph_file_path[-8:] == ".graphml":
             read_graphml("{}/{}".format(GRAPHS_DIRECTORY, graph_file_path), machine_name)
         else:
-            automata_bpp_logger.warning("Unknown format for reading the graph file: {}".format(graph_file_path))
+            LOGGER.warning("Unknown format for reading the graph file: {}".format(graph_file_path))
 
 
 class EXECUTION:
 
     @staticmethod
     def state(func):
-        current_machine = Machines().GetCurrentDefinedMachine()
-        if current_machine is not None:
-            current_machine.SetExecuteStateFunction(func.__name__, func)
+        machine = Machines().this_machine()
+        if machine is not None:
+            machine.set_state_function(func.__name__, func)
         return func
 
 
 class OPERATION:
 
     @staticmethod
-    def start_fsm():
-        Machines().ExecuteCommand(START_COMMAND_NAME)
+    def start():
+        Machines().execute_command(START_COMMAND)
 
     @staticmethod
-    def stop_fsm():
-        Machines().ExecuteCommand(STOP_COMMAND_NAME)
-        Machines().ReturnToStart()
-        CommandQueue().EmptyAllCommands()
+    def stop():
+        Machines().execute_command(STOP_COMMAND)
+        Machines().reset_machines()
+        CommandQueue().clear_all()
 
     @staticmethod
-    def reset_fsm():
-        OPERATION.stop_fsm()
-        OPERATION.start_fsm()
+    def reset():
+        OPERATION.stop()
+        OPERATION.start()
 
     @staticmethod
-    def run_fsm(cmd=None):
+    def run(cmd=None):
         if cmd is None:
-            Machines().ExecuteAllCommands()
+            Machines().execute_all()
         else:
-            Machines().ExecuteCommand(cmd)
+            Machines().execute_command(cmd)
 
 
 class INTERFACE:
@@ -71,7 +71,9 @@ class INTERFACE:
             def wrapper_in(*args, **kwargs):
                 result = func(*args, **kwargs)
                 if lambda_func(result):
-                    Machines().ExecuteCommand(command)
+                    Machines().execute_command(command)
                 return result
+
             return wrapper_in
+
         return wrapper_out

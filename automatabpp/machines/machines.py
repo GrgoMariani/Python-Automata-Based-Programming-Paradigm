@@ -1,42 +1,39 @@
-from automatabpp.automatabpp import automata_bpp_logger
-from automatabpp.metaclasses.singleton import Singleton
-from automatabpp.machine.machine import Machine
+from automatabpp.automatabpp import LOGGER
 from automatabpp.commandqueue.commandqueue import CommandQueue
+from automatabpp.machine.machine import Machine
+from automatabpp.metaclasses.singleton import Singleton
 
 
 class Machines(object, metaclass=Singleton):
 
     def __init__(self):
-        self.__list_of_machines = []
-        self.curr_machine_to_define = None
+        self.machines = []
+        self.machine = None
 
-    def AddNewMachine(self, machine_name: str):
-        self.curr_machine_to_define = Machine(machine_name)
-        self.__list_of_machines.append(self.curr_machine_to_define)
-        return self.curr_machine_to_define
+    def add_new_machine(self, machine_name: str):
+        self.machine = Machine(machine_name)
+        self.machines.append(self.machine)
+        return self.machine
 
-    def ExecuteNextCommand(self):                   # Some patterns could use this
-        next_command = CommandQueue().GetNextCommand()
+    def execute_next(self):  # Some patterns could use this
+        next_command = CommandQueue().get_next()
         if next_command is not None:
-            self.ExecuteCommand(next_command)
+            self.execute_command(next_command)
             return True
         return False
 
-    def ExecuteAllCommands(self):                   # Should be used as default
+    def execute_all(self):  # Should be used as default
         while len(CommandQueue()) > 0:
-            self.ExecuteNextCommand()
+            self.execute_next()
 
-    def ExecuteCommand(self, command: str):         # Not recommended if states can execute commands
-        automata_bpp_logger.debug("Executing command [{}]".format(command))
-        for machine in self.__list_of_machines:
-            machine.ExecuteTransition(command)
+    def execute_command(self, command: str):  # Not recommended if states can execute commands
+        LOGGER.debug("Executing command [{}]".format(command))
+        for machine in self.machines:
+            machine.transition(command)
 
-    def _AddTransitionToCurrDefined(self, st_before: str, command: str, st_after: str):
-        self.curr_machine_to_define.AddTransition(st_before, command, st_after)
+    def this_machine(self):
+        return self.machine
 
-    def GetCurrentDefinedMachine(self):
-        return self.curr_machine_to_define
-
-    def ReturnToStart(self):
-        for machine in self.__list_of_machines:
-            machine.ReturnToStart()
+    def reset_machines(self):
+        for machine in self.machines:
+            machine.reset_to_start()

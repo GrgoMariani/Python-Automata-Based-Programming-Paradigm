@@ -74,10 +74,10 @@ Let's see how this is implemented in the [example2.py][pycode] script.
 
 - All that's left is to run the machine:
     ```python
-    OPERATION.start_fsm()
-    OPERATION.run_fsm()
+    OPERATION.start()
+    OPERATION.run()
     ```
-    One thing to note here is that the `OPERATION.run_fsm()` is executed here without any argument.
+    One thing to note here is that the `OPERATION.run()` is executed here without any argument.
     That means it will run all the commands in the `CommandQueue` until the queue is empty.
     
 Run the code and see what you get.

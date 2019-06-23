@@ -44,8 +44,8 @@ Let's see how this is implemented in the [example1.py][pycode] script.
     ```python
     def test_email():
         for char in email_to_test:
-            OPERATION.run_fsm(char)
-        OPERATION.stop_fsm()
+            OPERATION.run(char)
+        OPERATION.stop()
     ```
     What this means is we will take one by one character from the e-mail and run it through our machine. At the very end we will send the `_stop_` command to let the automatabpp know we're done.
 
@@ -65,14 +65,14 @@ Let's see how this is implemented in the [example1.py][pycode] script.
 
 - Let's run the machine and check our first e-mail address:
     ```python
-    OPERATION.start_fsm()
+    OPERATION.start()
 
     email_to_test = "a_valid@email.example"
     test_email()
     ```
 - Once we're done we can restart the machine since it is currently in __EMAIL__ state and check another e-mail address:
     ```python
-    OPERATION.reset_fsm()
+    OPERATION.reset()
 
     email_to_test = "an._invalid@email@example-"
     test_email()

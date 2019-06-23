@@ -158,13 +158,13 @@ You can check the code in the [example4.py][pycode] script.
   For example: every time we call the `simulate_temperature_reading` function and its return value is in between 1 and 50 the command `temp_normal` will be added to the `CommandQueue` for later execution.
 - Only thing left to do is to run the automatabpp and simulate reading values:
   ```python
-  OPERATION.start_fsm()
+  OPERATION.start()
 
   for i in range(100):
       volt = round(simulate_battery_voltage_reading(i), 2)      # simulate reading the voltage sensor
       temp = round(simulate_temperature_reading(i), 2)          # simulate reading the temperature sensor
       print("\t\t|\t{}V\t|\t{}°C".format(volt, temp))
-      OPERATION.run_fsm()                                       # run commands left in the CommandQueue
+      OPERATION.run()                                       # run commands left in the CommandQueue
       time.sleep(2)
   ```
 

@@ -58,14 +58,14 @@ Let's see how this is implemented in the [example3.py][pycode] script.
 
 - Start the machine, run the bytecode through it and every 456 characters print a new line:
     ```python
-    OPERATION.start_fsm()
+    OPERATION.start()
 
     example = "Man is distinguished, not only by his reason, but by this singular passion from other animals, " \
             "which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable " \
             "generation of knowledge, exceeds the short vehemence of any carnal pleasure."
 
     for i, char in enumerate(text_to_bits(example)):
-        OPERATION.run_fsm(char)
+        OPERATION.run(char)
         if i > 0 and i % (8*57) == 0:
             print()
     ```

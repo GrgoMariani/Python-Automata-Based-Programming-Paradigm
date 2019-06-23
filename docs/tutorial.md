@@ -79,11 +79,11 @@ Now we are ready to start coding.
 
 - We are done with definitions so we can now start our code:
     ```python
-    FSM.OPERATION.start_fsm()
+    FSM.OPERATION.start()
     ```
     This piece of code actually calls the `_start_` command to be executed on all machines. Additionaly we can call the `state_change` command as well.
     ```python
-    FSM.OPERATION.run_fsm("state_change")
+    FSM.OPERATION.run("state_change")
     ```
 
 If we run our code we should see the following in the console:
@@ -109,8 +109,8 @@ def STATE_2(**_):
     print("Executing STATE_2")
 
 
-FSM.OPERATION.start_fsm()
-FSM.OPERATION.run_fsm("state_change")
+FSM.OPERATION.start()
+FSM.OPERATION.run("state_change")
 ```
 
 ### Other

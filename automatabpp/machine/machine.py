@@ -1,6 +1,6 @@
-from automatabpp.automatabpp import automata_bpp_logger
+from automatabpp.automatabpp import LOGGER
+from automatabpp.constants import START_STATE
 from automatabpp.state.state import State
-from automatabpp.constants import START_STATE_NAME
 
 
 class Machine(object):
@@ -8,31 +8,28 @@ class Machine(object):
     def __init__(self, machine_name: str):
         self.machine_name = machine_name
         self.states = dict()
-        self.curr_state = self.GetStateWithName(START_STATE_NAME)
+        self.curr_state = self.get_state_by_name(START_STATE)
 
-    def GetActiveState(self):
-        return self.curr_state
-
-    def GetStateWithName(self, state_name: str):
+    def get_state_by_name(self, state_name: str):
         if state_name in self.states.keys():
             return self.states[state_name]
         self.states[state_name] = State(state_name, self.machine_name)
         return self.states[state_name]
 
-    def AddTransition(self, st_before: str, command: str, st_after: str):
-        self.GetStateWithName(st_before).SetTransition(command, st_after)
+    def add_transition(self, state_before: str, command: str, state_after: str):
+        self.get_state_by_name(state_before).set_transition(command, state_after)
 
-    def SetExecuteStateFunction(self, state_name: str, callback: callable):
-        self.GetStateWithName(state_name).SetExecuteStateFunction(callback)
+    def set_state_function(self, state_name: str, callback: callable):
+        self.get_state_by_name(state_name).set_state_function(callback)
 
-    def ExecuteTransition(self, command: str):
-        st_after_name = self.curr_state.GetNextStateWithTransition(command)
+    def transition(self, command: str):
+        st_after_name = self.curr_state.transition_to_next(command)
         if st_after_name is not None:
-            automata_bpp_logger.debug("{}: state change {}->{}".format(self.machine_name, self.curr_state.GetName(), st_after_name))
-            self.curr_state = self.GetStateWithName(st_after_name)
-            self.curr_state.ExecuteState(command)
+            LOGGER.debug("{}: state change {}->{}".format(self.machine_name, self.curr_state.get_name(), st_after_name))
+            self.curr_state = self.get_state_by_name(st_after_name)
+            self.curr_state.execute_state(command)
             return True
         return False
 
-    def ReturnToStart(self):
-        self.curr_state = self.GetStateWithName(START_STATE_NAME)
+    def reset_to_start(self):
+        self.curr_state = self.get_state_by_name(START_STATE)
